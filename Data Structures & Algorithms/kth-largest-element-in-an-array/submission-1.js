@@ -1,0 +1,20 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number}
+     */
+    findKthLargest(nums, k) { // Time: O(nlogk), Space: O(k)
+        const minHeap = new MinPriorityQueue();
+
+        for (let num of nums) {
+            minHeap.enqueue(num);
+
+            if (minHeap.size() > k) {
+                minHeap.dequeue();
+            }
+        }
+
+        return minHeap.front();
+    }
+}
